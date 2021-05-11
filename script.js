@@ -1,24 +1,17 @@
 "use strict";
 
-const loadPartial = (fileName) => {
+const loadPartial = async partialName => {
     let filePath = new String();
     filePath += './pages/partials/';
-    filePath += fileName;
+    filePath += partialName;
     filePath += '.html';
-    fetch(filePath)
-        .then((res) => {
-            return res.text();
-        })
-        .then((html) => {
-            let doc = new DOMParser().parseFromString(html, 'text/html');
-            console.log(doc);
-        }).catch((err) => {
-            console.error(err);
-        });
+    let res = await fetch(filePath);
+    let text = await res.text();
+    document.querySelector('.' + partialName).innerHTML = text;
 }
 
 window.onload = async () => {
     console.log('works');
-    loadPartial('footer');
+    await loadPartial('footer');
 
 }
