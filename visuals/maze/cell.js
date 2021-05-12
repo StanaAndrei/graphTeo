@@ -62,7 +62,7 @@ class Cell {
 
     if (this.visited) {
       noStroke();
-      fill(255, 0, 255, 100);
+      fill(45, 252, 38, 100);
       rect(x, y, w, w);
     }
   };
