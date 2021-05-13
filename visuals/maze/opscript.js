@@ -1,6 +1,6 @@
 let genBtn = document.querySelector('#submit');
 let radio5 = document.querySelector('#op1');
-const mazeURL = 'graphTeo/visuals/maze/maze.html';
+const mazeURL = '/visuals/maze/maze.html';
 genBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let storage = window.localStorage;
