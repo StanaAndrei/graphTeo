@@ -1,7 +1,7 @@
 let genBtn = document.querySelector('#submit');
 let radio5 = document.querySelector('#op1');
 let mazeURL = '/visuals/maze/maze.html';
-const DEBUG = false;
+const DEBUG = Boolean(window.location.href.search('https') === -1);
 if (!DEBUG) {
     mazeURL = '/graphTeo' + mazeURL;
 }
