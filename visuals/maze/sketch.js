@@ -1,13 +1,13 @@
 let cols, rows;
 let w = 20;
 let grid = [];
-
 let current;
-
-let stack = [];
-
+let stack = new Stack();
 function setup() {
-  if (frames) {
+  let storage = window.localStorage;
+  let frames = storage.getItem('frames');
+  if (frames != null) {
+    frames = Number(frames);
     frameRate(frames);
   }
   let canvas = createCanvas(600, 600);
@@ -45,7 +45,7 @@ const dfs = () => {
     stack.push(current);
     removeWalls(current, next);
     current = next;
-  } else if (stack.length > 0) {
+  } else if (!stack.isempty()) {
     current = stack.pop();
   }
 }
@@ -58,19 +58,19 @@ function index(i, j) {
 }
 
 function removeWalls(a, b) {
-  let x = a.i - b.i;
-  if (x === 1) {
+  let deltaI = a.i - b.i;
+  if (deltaI === 1) {
     a.walls[3] = false;
     b.walls[1] = false;
-  } else if (x === -1) {
+  } else if (deltaI === -1) {
     a.walls[1] = false;
     b.walls[3] = false;
   }
-  let y = a.j - b.j;
-  if (y === 1) {
+  let deltaJ = a.j - b.j;
+  if (deltaJ === 1) {
     a.walls[0] = false;
     b.walls[2] = false;
-  } else if (y === -1) {
+  } else if (deltaJ === -1) {
     a.walls[2] = false;
     b.walls[0] = false;
   }
