@@ -1,7 +1,12 @@
 let genBtn = document.querySelector('#submit');
 let radio5 = document.querySelector('#op1');
 const mazeURL = '/visuals/maze/maze.html';
+const DEBUG = false;
+if (!DEBUG) {
+    mazeURL = '/graphTeo' + mazeURL;
+}
 genBtn.addEventListener('click', (e) => {
+
     e.preventDefault();
     let storage = window.localStorage;
     if (radio5.checked) {
