@@ -12,15 +12,17 @@ const getMovies = async () => {
 const mkdefined = (actor) => {
     if (edges[actor] == undefined) {
         edges[actor] = [];
-        console.log(1);
+        //console.log(1);
     }
 }
+
+
 
 const getLink = async (from, to) => {
     let movies = await getMovies();
     from = this.from;
     to = this.to;
-    console.log(movies[0]);
+    //console.log(movies[0]);
     for (let i = 0; i < movies.length; i++) {
         let title = movies[i].title;
         let cast = movies[i].cast;
@@ -39,6 +41,17 @@ const getLink = async (from, to) => {
             }
         }
     }
-    //console.log(edges['Steve Guttenberg']);
+    for (let key in edges) {
+        edges[key].sort((a, b) => {
+            if (a.to < b.to) {
+                return -1;
+            }
+            if (a.to > b.to) {
+                return 1;
+            }
+            return 0;//*/
+        });
+    }//*/
+    console.log(edges['Paul Reiser']);
     return 1;
 }
