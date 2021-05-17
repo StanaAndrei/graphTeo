@@ -1,4 +1,4 @@
-let from, to;
+let from, to, movies;
 let allActors;;
 let edges = [];
 const getMovies = async () => {
@@ -9,20 +9,13 @@ const getMovies = async () => {
 }
 //--------------------------------------
 
-const mkdefined = (actor) => {
+const mkdefined = actor => {
     if (edges[actor] == undefined) {
         edges[actor] = [];
-        //console.log(1);
     }
 }
 
-
-
-const getLink = async (from, to) => {
-    let movies = await getMovies();
-    from = this.from;
-    to = this.to;
-    //console.log(movies[0]);
+const mkGraph = () => {
     for (let i = 0; i < movies.length; i++) {
         let title = movies[i].title;
         let cast = movies[i].cast;
@@ -41,6 +34,9 @@ const getLink = async (from, to) => {
             }
         }
     }
+}
+
+const sortEdges = () => {
     for (let key in edges) {
         edges[key].sort((a, b) => {
             if (a.to < b.to) {
@@ -52,6 +48,21 @@ const getLink = async (from, to) => {
             return 0;//*/
         });
     }//*/
+}
+
+const mkUnique = () => {
+    
+}
+
+/*main*/
+const getLink = async (from, to) => {
+    //#region init
+    movies = await getMovies();
+    from = this.from;
+    to = this.to;
+    mkGraph();
+    sortEdges();
+    //#endregion init
     console.log(edges['Paul Reiser']);
     return 1;
 }
