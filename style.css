@@ -1,0 +1,15 @@
+.mainmenu > .button {
+    background-color: rgb(148, 177, 227);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+  
