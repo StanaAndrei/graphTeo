@@ -6,7 +6,6 @@ if (!DEBUG) {
     mazeURL = '/graphTeo' + mazeURL;
 }
 genBtn.addEventListener('click', (e) => {
-
     e.preventDefault();
     let storage = window.localStorage;
     if (radio5.checked) {
@@ -24,3 +23,8 @@ const check = () => {
     }
 }
 check();
+
+window.onload = async () => {
+    console.log(123);
+    await loadPartials();
+}
