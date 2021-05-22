@@ -1,6 +1,8 @@
 let navIsOpen = false;
 let span = document.querySelector('span');
 let iniState = span.style.display;
+let closeBtn = document.querySelector('.closebtn');
+
 const openNav = () => {
   document.getElementById('mySidenav').style.width = '250px';
   document.getElementById('main').style.marginLeft = '250px';
@@ -16,3 +18,6 @@ const closeNav = () => {
   navIsOpen = false;
   span.style.display = iniState;
 };
+
+span.addEventListener('click', openNav);
+closeBtn.addEventListener('click', closeNav);

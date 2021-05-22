@@ -6,4 +6,11 @@ const loadPartials= async () => {
         let text = await res.text();
         partial.innerHTML = text;//*/.
     }
+    //console.log('loaded');
 };
+
+(async () => {
+    await loadPartials();
+})();
+
+//home
