@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../mstyle.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../mstyle.css" />
     <script src="../pscripts.js" defer></script>
     <script src="./../../mscripts/loader.js" defer></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="partial" data-path="./../partials/header.html"></div>
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn">&times;</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-      </div>
-      <span style="font-size:30px;cursor:pointer">&#9776; </span>
-      <div id="main">
-
-        Grafurile au numeroase aplicații în diverse domenii: proiectarea circuitelor electrice, determinarea celui mai scurt drum dintre două localități, rețelele sociale (ex. Facebook), etc.
-
-        Primele rezultate legate de teoria grafurilor au fost obținute de matematicianul Leonard Euler, cel care a studiat Problema podurilor din Königsberg, din imaginea de mai jos. A demonstrat că problema nu are soluție, iar în onoarea lui o categorie specială de grafuri au fost numite grafuri euleriene.
-      </div>
-      <div class="partial" data-path="./../partials/footer.html"></div>
-    </body>
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+    </div>
+    <span style="font-size: 30px; cursor: pointer">&#9776; </span>
+    <div id="main">
+      Grafurile au numeroase aplicații în diverse domenii: proiectarea
+      circuitelor electrice, determinarea celui mai scurt drum dintre două
+      localități, rețelele sociale (ex. Facebook), etc. Primele rezultate legate
+      de teoria grafurilor au fost obținute de matematicianul Leonard Euler, cel
+      care a studiat Problema podurilor din Königsberg, din imaginea de mai jos.
+      A demonstrat că problema nu are soluție, iar în onoarea lui o categorie
+      specială de grafuri au fost numite grafuri euleriene. Terminologie
+      Definiție: Se numește graf neorientat o pereche ordonată de mulțimi
+      G=(X,U), unde: X este o mulțime finită și nevidă de elemente numite
+      vârfuri sau noduri; U este o mulțime finită de submulțimi cu două elemente
+      din X, numite muchii. Vom nota în continuare vârfurile cu valori între 1
+      și n – unde n este număru de vârfuri din graf, iar muchiile cu [x,y] sau
+      (x,y), unde x și y sunt vârfuri și se numesc extremitățile muchiei. Un
+      vecin al unui vârf x este orice vârf y cu proprietatea că există muchia
+      [x,y]. Două vârfuri între care există muchie se numesc adiacente. Două
+      muchii sunt incidente dacă au o o extremitate comună. Un vârf este
+      incident cu o muchie dacă vârful este extremitate a acelei muchii.
+      Mulțimea muchiilor are proprietatea de simetrie: dacă [x,y] este muchie,
+      atunci și [y,x] este muchie. Conform definiției: într-un graf neorientat
+      nu există muchie de la un vârf la el însuși; intre două vârfuri distincte
+      există cel mult o muchie.
+    </div>
+    <div class="partial" data-path="./../partials/footer.html"></div>
+  </body>
 </html>

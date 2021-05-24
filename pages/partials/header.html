@@ -44,9 +44,14 @@
       svg {
         float: left;
       }
+
+      .helper {
+        display: none;
+      }
     </style>
     <div class="header" id="myHeader">
-      <div class="home" onclick="window.location.assign('/')">
+      <div class="home"
+       onclick="window.location.assign(Boolean(window.location.href.search('https') === -1) ? '/' : '/graphTeo/')">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -133,5 +138,9 @@
       </div>
       <h2>GRAPH THEORY</h2>
     </div>
+    <div class="helper"></div>
   </body>
+  <script>
+    console.log('script eval');
+  </script>
 </html>
