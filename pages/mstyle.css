@@ -1,10 +1,27 @@
 * {
-    text-align: center;
+  justify-content: left;
 }
 
 body {
   font-family: "Lato", sans-serif;
-  transition: background-color .5s;
+  transition: background-color 0.5s;
+}
+
+span {
+  font-size: 30px;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+}
+
+.divOfBtn {
+  color: white;
+  background-color: black;
+  width: 30px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px #999;
+  position: fixed;
+  padding: 5px;
 }
 
 .sidenav {
@@ -42,13 +59,17 @@ body {
 }
 
 #main {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 16px;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 /*---------*/
