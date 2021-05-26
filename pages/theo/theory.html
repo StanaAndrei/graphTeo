@@ -28,7 +28,7 @@
     </div>
     <div id="main">
       Introducere:
-      <br>
+      <br />
       Grafurile au numeroase aplicații în diverse domenii: proiectarea
       circuitelor electrice, determinarea celui mai scurt drum dintre două
       localități, rețelele sociale (ex. Facebook), etc. Primele rezultate legate
@@ -36,9 +36,9 @@
       care a studiat Problema podurilor din Königsberg, din imaginea de mai jos.
       A demonstrat că problema nu are soluție, iar în onoarea lui o categorie
       specială de grafuri au fost numite grafuri euleriene.
-      <br><br><br>
-       Terminologie
-      <br>
+      <br /><br /><br />
+      <div class="subtitle">Terminologie</div>
+      <br />
       Definiție: Se numește graf neorientat o pereche ordonată de mulțimi
       G=(X,U), unde: X este o mulțime finită și nevidă de elemente numite
       vârfuri sau noduri; U este o mulțime finită de submulțimi cu două elemente
@@ -54,11 +54,38 @@
       nu există muchie de la un vârf la el însuși; intre două vârfuri distincte
       există cel mult o muchie.
       <i>
-        <br>
+        <br />
         Exemplu: Fie G=(X,U), unde: X={1,2,3,4,5,6,7,8,9,10,11}
         U={[1,4],[1,5],[2,3],[2,8],[3,11],[4,5],[4,9],[7,10],[8,11]}
       </i>
+      <br /><br />
+      <img src="./../images/img1.png" width="200" height="200" />
+      <div class="subtitle">Gradul unui vârf</div>
+      <b>Definiție</b> Într-un graf neorientat se numește grad al unui vârf
+      numărul de vârful adiacente cu acesta (sau numărul de muchii incidente cu
+      acesta). Gradul unui vărf x se notează d(x) (degree).
     </div>
+    <b>Observatii:</b>
+    <ul>
+      <li>
+        un vârf cu gradul 0 se numește izolat. În graful de mai sus, vârful 6
+        este izolat.
+      </li>
+      <li>
+        un vârf cu gradul 1 se numește terminal. În graful de mai sus, vârful 9
+        este vârf terminal.
+      </li>
+      <li>gradul maxim al unui vârf într-un graf cu n vârfuri este n-1.</li>
+    </ul>
+    <b>Teoremă:</b>
+    Într-un graf neorientat, suma gradelor tuturor vârfurilor este dublul numărului de muchii.
+    <b>Consecințe:</b>
+    <ul>
+      <li>Suma gradelor tuturor vârfurilor este număr par.</li>
+      <li>Într-un graf neorientat, numărul de vârfuri de grad impar este întotdeauna par.</li>
+    </ul>
+    <br><br><br><br>
+    
     <div class="partial" data-path="./../partials/footer.html"></div>
   </body>
 </html>

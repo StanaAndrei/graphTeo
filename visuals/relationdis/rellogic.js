@@ -1,5 +1,5 @@
 let movies;
-let allAcendrs;;
+let actors = new Set([]);
 let edges = [];
 const getMovies = async () => {
     const url = './data.json';
@@ -58,10 +58,11 @@ const bfs = (start, end) => {
     let link = [];
     let q = new Queue();
     q.push(start);
-    console.log(q.front());
+    //console.log(q.front());
     while (!q.isempty()) {
         let front = q.pop();
         for (let to of edges[front]) {
+
         }
     }//*/
 }
