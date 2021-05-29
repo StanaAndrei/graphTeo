@@ -54,17 +54,34 @@ const mkUnique = () => {
     
 }
 
-const bfs = (start, end) => {
+const dfs = (start, end) => {
+    console.log(start)
+    let visited = [];
     let link = [];
-    let q = new Queue();
-    q.push(start);
-    //console.log(q.front());
-    while (!q.isempty()) {
-        let front = q.pop();
-        for (let to of edges[front]) {
-
+    let minDis = Number.POSITIVE_INFINITY;
+    const utilDFS = (node, dis, paramLink) => {
+        visited[node] = true;
+        let clink = _.cloneDeep(paramLink);
+        clink.push(node);
+        if (node === end && minDis > dis) {
+            console.log(123);
+            minDis = dis;
+            link = clink;
+            return;
         }
-    }//*/
+        //console.log(43);
+        for (let i = 0; i < edges[node].length; i++) {
+            const to = edges[node][i];
+            if (visited[to.end] != undefined) {
+                continue;
+            }
+            //console.log(to.end)
+            utilDFS(to.end, dis + 1, clink);
+        }//*/
+    }
+    utilDFS(start, 0, []);
+    console.log(link);
+    return link;
 }
 
 /*main*/
@@ -74,7 +91,10 @@ const getLink = async (start, end) => {
     mkGraph();
     sortEdges();
     //#endregion init
-    bfs(start, end);
-    //console.log(edges['Paul Reiser']);
+    start = 'Kathryn Dowling';
+    end = 'Michael Tucker';
+    //end = start;
+    let link = dfs(start, end);
     return 1;
+    //console.log(edges['Paul Reiser']);
 }
