@@ -1,9 +1,9 @@
 * {
   justify-content: left;
+  
 }
 
 body {
-  font-family: "Lato", sans-serif;
   transition: background-color 0.5s;
 }
 
@@ -75,4 +75,14 @@ span {
 /*---------*/
 .subtitle {
   font-size: 30px;
+  font-family: inherit;
+}
+
+b {
+  font-family: inherit;
+  
+}
+
+li {
+  font-family: inherit;
 }
