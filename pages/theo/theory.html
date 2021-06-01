@@ -9,7 +9,11 @@
     <script src="./../../mscripts/loader.js" defer></script>
     <!--math-->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap"
@@ -62,11 +66,12 @@
         U={[1,4],[1,5],[2,3],[2,8],[3,11],[4,5],[4,9],[7,10],[8,11]}
       </i>
       <br /><br />
-      <img src="./../images/img1.png" width="200" height="200" />
+      <img src="./../images/img1.png" width="300" height="300" />
       <div class="subtitle">Gradul unui vârf</div>
       <b>Definiție</b> Într-un graf neorientat se numește grad al unui vârf
       numărul de vârful adiacente cu acesta (sau numărul de muchii incidente cu
       acesta). Gradul unui vărf x se notează d(x) (degree).
+      <br />
       <b>Observatii:</b>
       <ul>
         <li>
@@ -90,6 +95,164 @@
           întotdeauna par.
         </li>
       </ul>
+      <div class="subtitle">Reprezentarea grafurilor neorientate</div>
+      <b>1.Matricea de adiacență: </b><br />
+      Pentru un graf neorientat G=(X,U) cu n vârfuri, matricea de adiacență este
+      o matrice cu n linii și n coloane și elemente din {0,1}, cu:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>j</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable columnalign="left left" rowspacing="4pt" columnspacing="1em">
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mstyle displaystyle="false" scriptlevel="0">
+                  <mtext>dac&#x103;&#xA0;</mtext>
+                </mstyle>
+                <mo stretchy="false">[</mo>
+                <mi>i</mi>
+                <mo>,</mo>
+                <mi>j</mi>
+                <mo stretchy="false">]</mo>
+                <mo>&#x2208;<!-- ∈ --></mo>
+                <mi>U</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mstyle displaystyle="false" scriptlevel="0">
+                  <mtext>dac&#x103;&#xA0;</mtext>
+                </mstyle>
+                <mo stretchy="false">[</mo>
+                <mi>i</mi>
+                <mo>,</mo>
+                <mi>j</mi>
+                <mo stretchy="false">]</mo>
+                <mo>&#x2209;<!-- ∉ --></mo>
+                <mi>U</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo fence="true" stretchy="true" symmetric="true"></mo>
+        </mrow>
+      </math>
+      Exemplu: Pentru graful neorientat de mai jos avem următoarea matrice de
+      adiacență:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>A</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mtable
+            columnalign="center center center center center"
+            rowspacing="4pt"
+            columnspacing="1em"
+          >
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
+      </math>
+      <br><br><br>
+      <img src="./../images/img2.JPG" alt="" width="300" height="300">
       <br /><br /><br /><br />
     </div>
     <div class="partial" data-path="./../partials/footer.html"></div>
