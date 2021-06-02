@@ -19,5 +19,37 @@ const closeNav = () => {
   span.style.display = iniState;
 };
 
-span.addEventListener('click', openNav);
-closeBtn.addEventListener('click', closeNav);
+const addCls = query => {
+  let elems = document.querySelectorAll(query);
+  for (let elem of elems) {
+    elem.classList.add('title');
+  }
+}
+
+const addIDs = () => {
+  let titles = document.querySelectorAll('.title');
+  for (let title of titles) {
+    title.id = title.innerText.toLowerCase();
+  }
+}
+
+const updateNav = () => {
+  let sidenav = document.querySelector('#mySidenav');
+  let titles = document.querySelectorAll('.title');
+  for (let title of titles) {
+    let node = document.createElement('a');
+    node.href = '#' + title.id;
+    node.innerText = title.id;
+    sidenav.appendChild(node)
+  }
+}
+
+window.onload = () => {
+  span.addEventListener('click', openNav);
+  closeBtn.addEventListener('click', closeNav);
+  addCls('.subtitle');
+  addCls('.bigt');
+  addIDs();
+  console.assert(document.querySelector('#terminologie') != undefined);
+  updateNav();
+}

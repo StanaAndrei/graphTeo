@@ -40,7 +40,7 @@ span {
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 17px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -48,6 +48,7 @@ span {
 
 .sidenav a:hover {
   color: #f1f1f1;
+  font-size: 20px;
 }
 
 .sidenav .closebtn {
@@ -90,7 +91,7 @@ img {
   user-select: none;
 }
 
-.title {
+.bigt {
   color: red;
   text-align: center;
   font-size: 30px;
