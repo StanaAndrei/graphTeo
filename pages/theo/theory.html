@@ -150,8 +150,9 @@
           <mo fence="true" stretchy="true" symmetric="true"></mo>
         </mrow>
       </math>
-      Exemplu: Pentru graful neorientat de mai jos avem următoarea matrice de
-      adiacență:
+      <br />
+      Exemplu: <br />
+      Pentru graful neorientat de mai jos avem următoarea matrice de adiacență:
       <math xmlns="http://www.w3.org/1998/Math/MathML">
         <mi>A</mi>
         <mo>=</mo>
@@ -251,8 +252,149 @@
           <mo>)</mo>
         </mrow>
       </math>
-      <br><br><br>
-      <img src="./../images/img2.JPG" alt="" width="300" height="300">
+      <br /><br /><br />
+      <img src="./../images/img2.JPG" alt="" width="300" height="300" />
+      <br /><br />
+      <b>2.Lista de muchii</b><br />
+      Lista de muchii a unui graf neorientat reprezintă o mulțime ce conține
+      toate muchiile din graf. Pentru graful de sus, lista de muchii este:
+      U={[1,2],[1,5],[2,5],[4,5]} Pentru reprezentarea în memorie putem folosi:
+      <ul>
+        <li>un tablou unidimensional cu elemente de tip struct {int I,J;}</li>
+        <li>două tablouri unidimensionale cu elemente de tip int</li>
+        <li>o listă alocată dinamic</li>
+        <li>etc.</li>
+      </ul>
+      <b>3.Liste de adiacențe (de vecini): </b><br />
+      Pentru un graf neorientat cu G=(X,U) se va memora numărul de vârfuri n și
+      apoi, pentru fiecare vârf x, lista vârfurilor adiacente cu x, adică a
+      vârfurilor y cu proprietatea că există muchia [x,y]. Pentru graful de sus,
+      listele de adiacență sunt: <br />
+      1: 2 5 <br />
+      2: 1 5 <br />
+      3: vidă <br />
+      4: 5 <br />
+      5: 1 2 4 <br />
+      La reprezentarea în memorie trebui avut în vedere că dimensiunile listelor
+      de vecini sunt variabile. De aceea, este neeficientă utilizarea unor
+      tablouri alocate static. Astfel, putem folosi:
+
+      <ul>
+        <li>un șir de n tablouri unidimensionale alocate dinamic;</li>
+        <li>un șir de n vectori din STL;</li>
+        <li>un șir de n liste simplu (dublu) înlănțuite alocate dinamic.</li>
+      </ul>
+      <div class="subtitle">Graf parțial. Subgraf. Graf complementar</div>
+      <b>Definiție:</b> Fie G=(X, U) un graf neorientat. Se numeşte graf parțial
+      al grafului G, graful neorientat G1=(X, U1), unde U1 ⊆ U. Din definiție
+      rezultă:
+      <ul>
+        <li>
+          Un graf parțial al unui graf neorientat G=(V,U), are aceeaşi mulțime
+          de vârfuri ca şi G, iar mulțimea muchiilor este o submulțime a lui U
+          sau chiar U.
+        </li>
+        <li>
+          Fie G=(X, U) un graf neorientat. Un graf parțial al grafului G se
+          obține păstrând vârfurile şi eliminând eventual nişte muchii (se pot
+          elimina şi toate muchiile sau chiar nici una).
+        </li>
+      </ul>
+      <b>Definiție:</b> Fie G=(X, U) un graf orientat. Se numeşte subgraf al
+      grafului G graful neorientat G1=(X1,U1) unde X1 ⊆ X iar U1 conține toate
+      arcele din U care au extremitățile în X1. <br />
+      Din definiție rezultă: <br />
+      Fie G=(X,U) un graf orientat. Un subgraf al grafului G, se obține ştergând
+      eventual anumite vârfuri şi odată cu acestea şi muchiile care le admit ca
+      extremitate (nu se pot şterge toate vârfurile deoarece s-ar obține un graf
+      cu mulțimea vârfurilor vidă).
+      <img src="./../images/img3.JPG" alt="" />
+      <b>Teoremă:</b> Fie G un graf neorientat cu n vârfuri și m muchii. Atunci:
+      <ul>
+        <li>graful G admite 2^m grafuri parțiale;</li>
+        <li>graful G admite 2^(n)–1 subgrafuri;</li>
+        <li>graful G admite un unic graf complementar.</li>
+      </ul>
+      <div class="subtitle">
+        Graf nul. Graf complet. Graf regulat. Graf bipartit
+      </div>
+      <b>Definiție:</b>
+      Un graf neorientat se numește graf nul dacă mulțimea muchiilor este vidă.
+      <br />
+      Într-un graf nul toate vârfurile sunt izolate.
+      <br />
+      <b>Definiție:</b>
+      Fie G=(X, U) un graf neorientat. Graful G se numește graf complet dacă
+      oricare două vârfuri distincte ale sale sunt adiacente. Un graf complet cu
+      n vârfuri se notează K<small>n</small>.
+      <br />
+      Exemplu: Graful următor este graful K<small>5</small>.
+      <br /><br /><br />
+      <img src="./../images/img4.JPG" alt="" />
+      <br />
+      Într-un graf complet cu n vârfuri sunt
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msubsup>
+          <mi>C</mi>
+          <mi>n</mi>
+          <mn>2</mn>
+        </msubsup>
+        <mo>=</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi>n</mi>
+              <mo>&#x2217;<!-- ∗ --></mo>
+              <mo stretchy="false">(</mo>
+              <mi>n</mi>
+              <mo>&#x2212;<!-- − --></mo>
+              <mn>1</mn>
+              <mo stretchy="false">)</mo>
+            </mrow>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
+      </math>
+      muchii și fiecare vârf are gradul n-1.
+      <br />
+      <b>Propoziție:</b><br />
+      Sunt
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+          <mn>2</mn>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mfrac>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>n</mi>
+                <mo>&#x2217;<!-- ∗ --></mo>
+                <mo stretchy="false">(</mo>
+                <mi>n</mi>
+                <mo>&#x2212;<!-- − --></mo>
+                <mn>1</mn>
+                <mo stretchy="false">)</mo>
+              </mrow>
+              <mn>2</mn>
+            </mfrac>
+          </mrow>
+        </msup>
+      </math>
+      grafuri neorientate distincte cu n vârfuri.
+      <b>Definiție:</b>
+      Un graf în care toate nodurile au acelaşi grad se numește graf regulat.
+      <b>Exemplu:</b><br />
+      Graful de mai jos este regulat. <br /><br />
+      <img src="./../images/img5.JPG" alt="" />
+      <br />
+      <b>Definiţie:</b> <br>
+      Un graf G=(X, U) se numește graf bipartit dacă există două mulţimi nevide A și B astfel încât X=A ∪ B, A ∩ B = ∅ şi orice muchie u a lui G are o extremitate în A iar cealaltă în B. Mulţimile A şi B formează o partiţie a lui X.
+      <br>
+      <b>Exemplu:</b>
+      <br>Graful următor este bipartit. A={1,2,5,7} și B={3,4,6}.
+      <br>
+      <img src="./../images/img6.JPG" alt="">
+      <br>
+      <b>Definiție:</b>
+      
       <br /><br /><br /><br />
     </div>
     <div class="partial" data-path="./../partials/footer.html"></div>

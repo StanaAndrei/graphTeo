@@ -85,3 +85,7 @@ b {
 li {
   font-family: inherit;
 }
+
+img {
+  user-select: none;
+}
