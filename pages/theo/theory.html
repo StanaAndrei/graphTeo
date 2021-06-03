@@ -29,7 +29,7 @@
     <div class="divOfBtn">
       <span>&#9776; </span>
     </div>
-    <div class="title">Grafuri(neorientate)</div>
+    <div class="bigt">Grafuri(neorientate)</div>
     <div id="main">
       Introducere:
       <br />
@@ -479,18 +479,240 @@
       [1,4,2,3,7,6,5,1]
       <br />
       <img src="./../images/img12.JPG" alt="" />
-      <br>
+      <br />
       <b>Teoremă:</b>
-      Un G un graf neorientat. Dacă are n≥3 vârfuri şi gradul oricărui vârf verifică inegalitatea d(x)≥n/2 atunci G este hamiltonian.
-      <br><b>Definiție:</b>
-      Se numește graf eulerian un graf care conține un ciclu eulerian. Se numește ciclu eulerian un ciclu care conține toate muchiile grafului. <br>
-      Graful următor este eulerian. Un ciclu eulerian este: [1,4,2,1,3,2,7,3,5,7,6,5,1] <br>
-      <img src="./../images/img13.JPG" alt=""> <br>
+      Un G un graf neorientat. Dacă are n≥3 vârfuri şi gradul oricărui vârf
+      verifică inegalitatea d(x)≥n/2 atunci G este hamiltonian.
+      <br /><b>Definiție:</b> Se numește graf eulerian un graf care conține un
+      ciclu eulerian. Se numește ciclu eulerian un ciclu care conține toate
+      muchiile grafului. <br />
+      Graful următor este eulerian. Un ciclu eulerian este:
+      [1,4,2,1,3,2,7,3,5,7,6,5,1] <br />
+      <img src="./../images/img13.JPG" alt="" /> <br />
       <b>Teoremă:</b>
-      <br>Un graf G = (X,U), fără vârfuri izolate, este eulerian dacă şi numai dacă este conex şi
-      gradele tuturor vârfurilor sale sunt numere pare. <br>
-      <div class="title" id="grori">Grafuri orientate</div>
+      <br />Un graf G = (X,U), fără vârfuri izolate, este eulerian dacă şi numai
+      dacă este conex şi gradele tuturor vârfurilor sale sunt numere pare.
+      <br />
+      <div class="bigt" id="grori">Grafuri orientate</div>
+      <br />
+      Se numeşte graf orientat sau digraf o pereche ordonată de mulțimi notată
+      G=(V, U), unde:
+      <br />
+      V este o mulțime finită şi nevidă ale cărei elemente se numesc noduri sau
+      vârfuri, U este o mulțime de perechi ordonate de elemente distincte din V
+      ale cărei elemente se numesc arce;
+      <br />
+      <img src="./../images/img14.JPG" alt="" />
+      <br />
+      <b>Notiuni:</b>
+      <ul>
+        <li>
+          extremități ale unui arc: pentru arcul u=(x,y), se numesc extremități
+          ale sale nodurile x şi y;
+          <ul>
+            <li>x se numeşte extremitate inițială;</li>
+            <li>y se numeşte extremitate finală;</li>
+            <li>y se numește succesor al lui x;</li>
+            <li>x se numește predecesor al lui y.</li>
+          </ul>
+        </li>
+        <li>
+          vârfuri adiacente: dacă într-un graf există arcul u=(x,y) (sau
+          u=(y,x), sau amândouă), se spune despre nodurile x şi y că sunt
+          adiacente;
+        </li>
+        <li>
+          incidență:
+          <ul>
+            <li>
+              dacă u1 şi u2 sunt două arce ale aceluiaşi graf, se numesc
+              incidente dacă au o extremitate comună. Exemplu: u1=(x,y) şi
+              u2=(y,z) sunt incidente;
+            </li>
+            <li>
+              dacă u1=(x,y) este un arc într-un graf, se spune despre el şi
+              nodul x, sau nodul y, că sunt incidente.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="subtitle">Grade</div>
+      <br />
+      <b>Definiție:</b>
+      Fie G=(V, U) un graf orientat și x un nod al său. <br />
+      <ul>
+        <li>
+          Se numeşte grad exterior al nodului x, numărul arcelor de forma (x,y)
+          (adică numărul arcelor care ies din x), notat d+(x).
+        </li>
+        <li>
+          Se numeşte grad interior al nodului x, numărul arcelor de forma (y,x)
+          (adică numărul arcelor care intră în x), notat d-(x).
+        </li>
+      </ul>
+      <img src="./../images/img15.JPG" alt="" />
+      <br />
+      Pentru graful de sus: d+(2)=2, d-(2)=3
+      <div class="subtitle">Graf complet. Graf turneu.</div>
+      <br />
+      Fie G=(V, U) un graf orientat. Graful G se numește graf complet dacă
+      oricare două vârfuri distincte ale sale sunt adiacente. <br />
+      Două vârfuri x și y sunt adiacente dacă:
 
+      <ul>
+        <li>între ele există arcul (x,y), sau</li>
+        <li>între ele există arcul (y,x), sau</li>
+        <li>între ele există arcele (x,y) şi (y,x).</li>
+      </ul>
+      <br />
+      <img src="./../images/img16.JPG" alt="" />
+      <br />
+      <b>Teoremă:</b>
+      Numărul de grafuri orientate complete cu n noduri este 3^n*(n-1)/2.
+      <b>Definiție:</b> Un graf orientat este turneu, dacă oricare ar fi două
+      vârfuri i şi j, i≠j, între ele există un singur arc: arcul (i,j) sau arcul
+      (j,i).
+      <br />
+      <img src="./../images/img17.JPG" alt="" />
+      <b>Proprietăți:</b>
+      <ul>
+        <li>Orice graf turneu este graf complet.</li>
+        <li>TeAvem 2^n*(n-1)/2 grafuri turneu cu n noduri.a</li>
+        <li>
+          În orice graf turneu există un drum elementar care trece prin toate
+          vârfurile grafului.
+        </li>
+      </ul>
+      <div class="subtitle">Conexitate</div>
+      <div class="subtitle">*Lanț. Drum</div>
+      Definiție: Fie G=(V, U) un graf orientat. Se numește lanț, în graful G, o
+      succesiune de arce, notată L = (u1 , u2 ,..., uk) cu proprietatea ca
+      oricare două arce consecutive au o extremitate comună (nu are importanță
+      orientarea arcelor). sau Definiție: Fie G=(V, U) un graf orientat. Se
+      numește lanț, în graful G, o succesiune de noduri, notată L = (x1 , x2
+      ,..., xp) cu proprietatea ca oricare două noduri consecutive sunt
+      adiacente. Lungimea unui lanț este egală cu numărul de arce din care este
+      alcătuit. Primul nod și ultimul nod dintr-un lanț formează extremitățile
+      lanțului. Definiție. Fie G=(V, U) un graf orientat. Se numește drum în
+      graful G o succesiune de noduri, notată D = (x1 , x2 ,..., xk), cu
+      proprietatea că pentru orice 1 ≤ i &lt k, (xi,xi+1) este arc în G.
+      Lungimea unui drum este egală cu numărul de arce din care este alcătuit.
+      Pentru un drum D = (x1 , x2 ,..., xk), nodurile x1 și xk reprezintă
+      extremitățile – inițială, respectiv finală. Un lanț (drum) se numește
+      elementar dacă în el nu se repetă noduri. Un lanț (drum) se numește simplu
+      dacă în el nu se repetă arce.
+      <div class="subtitle">*Circuit:</div>
+      Se numește circuit un drum simplu în care extremitatea inițială și finală
+      sunt egale. Se numește circuit elementar un circuit în care, cu excepția
+      extremităților, nu se repetă noduri. Lungimea unui circuit este
+      reprezentată de numărul de arce din care acesta este alcătuit.
+      <br />
+      <div class="subtitle">Conexitate. Tare conexitate</div>
+      Definiții: Fie G=(V,U) un graf orientat. Graful se numește tare conex dacă
+      între oricare două noduri distincte există cel puțin un drum. Se numește
+      componentă tare conexă un subgraf tare conex și maximal cu această
+      calitate – dacă am mai adauga un nod, n-ar mai fi tare conex. Observație:
+      Un nod al grafului face parte dintr-o singură componentă tare conexă. Dacă
+      ar face parte din două compoennte tare conexe, ele s-ar “reuni” prin
+      intermediul acelui nod.
+      <div class="subtitle">Graf hamiltonian. Graf eulerian</div>
+      Definiții: Fie un graf orientat G=(V,U). Un drum elementar care conține
+      toate nodurile grafului se numește drum hamiltonian. Un circuit elementar
+      care conține toate nodurile grafului se numește circuit hamiltonian. Un
+      graf care conține un circuit hamiltonian se numește graf hamiltonian.
+
+      <b> Definiții: </b>
+      Fie un graf orientat G=(V,U). Un drum care conține toate arcele grafului
+      se numește drum eulerian. Un circuit care conține toate arcele grafului se
+      numește circuit eulerian. Un graf care conține un circuit eulerian se
+      numește graf eulerian. Teoremă: Un graf fără noduri izolate este eulerian
+      dacă și numai dacă este conex și pentru fiecare nod, gradul interior este
+      egal cu cel exterior. Exemplu: Graful orientat de mai jos este eulerian.
+      <br />
+      <img src="./../images/img18.JPG" alt="" />
+      <br />
+      Graful de mai sus nu este tare conex. El conține trei componente tare
+      conexe. <br />
+      Observație: Un nod al grafului face parte dintr-o singură componentă tare
+      conexă. Dacă ar face parte din două compoennte tare conexe, ele s-ar
+      “reuni” prin intermediul acelui nod.
+      <div class="subtitle">Graf hamiltonian. Graf eulerian</div>
+      Definiții: Fie un graf orientat G=(V,U). Un drum elementar care conține
+      toate nodurile grafului se numește drum hamiltonian. Un circuit elementar
+      care conține toate nodurile grafului se numește circuit hamiltonian. Un
+      graf care conține un circuit hamiltonian se numește graf hamiltonian.
+      <br />
+      Definiții: Fie un graf orientat G=(V,U). Un drum care conține toate arcele
+      grafului se numește drum eulerian. Un circuit care conține toate arcele
+      grafului se numește circuit eulerian. Un graf care conține un circuit
+      eulerian se numește graf eulerian. Teoremă: Un graf fără noduri izolate
+      este eulerian dacă și numai dacă este conex și pentru fiecare nod, gradul
+      interior este egal cu cel exterior. <br />
+      <div class="bigt">Parcurgerea în adâncime</div>
+      <br />
+      Parcurgerea în adâncime reprezintă explorarea “naturală” a unui graf
+      neorientat. Este foarte asemănătoare cu modul în care un turist vizitează
+      un oraș în care sunt obiective turistice (vârfurile grafului) și căi de
+      acces între obiective (muchiile). Vizitarea orașului va avea loc din
+      aproape în aproape: se pleacă de la un obiectiv de pornire, se continuă cu
+      un obiectiv învecinat cu acesta, apoi unul învecinat cu al doilea, etc.
+      Parcurgerea în adâncime se face astfel:
+      <ul>
+        <li>
+          Se începe cu un vârf inițial x, care este în acest moment vârf curent.
+        </li>
+        <li>
+          Vârful x se vizitează. Se determină primul său vecin nevizitat y al
+          lui x, care devine vârf curent.
+        </li>
+        <li>
+          Apoi se vizitează primul vecin nevizitat al lui y, şi aşa mai departe,
+          mergând în adâncime, până când ajungem la un vârf care nu mai are
+          vecini nevizitați. Când ajungem într-un astfel de vârf, ne întoarcem
+          la “părintele” acestuia – vârful din care am ajuns în acesta.
+        </li>
+        <li>
+          Dacă acest vârf mai are vecini nevizitați, alegem următorul vecin
+          nevizitat al său și continuam parcurgerea în același mod.
+        </li>
+        <li>
+          Dacă nici acest vârf nu mai are vecini nevizitați, revenim în vârful
+          său părinte și continuăm în același mod, până când toate vârfurile
+          accesibile din vârful de start sunt vizitate.
+        </li>
+      </ul>
+      Pentru implementarea algoritmului se foloseşte un vector caracteristic
+      pentru memorarea faptului că un anume vârf a fost sau nu vizitat, la un
+      anumit moment al parcurgerii: Pentru a determina ordinea în care se
+      parcurg nodurile care pot fi vizitate, se folosește o stivă: Pentru
+      implementare se poate folosi ca stivă memoria STACK, prin intermediul
+      recursivității.
+      <br />
+      <b>Implementare C++: </b>
+      <script
+        src="https://ideone.com/e.js/9llxQr"
+        type="text/javascript"
+      ></script>
+      <br />
+      <div class="bigt">Parcurgerea în lățime</div>
+      Se parcurge vârful de start, apoi vecinii acestuia, apoi vecinii
+      nevizitați ai acestora, etc, până când sunt vizitate toate vârfurile
+      accesibile. Practic, pentru a stabili ordinea de vizitare se folosește o
+      coadă, iar pentru a stabili dacă un vârf a fost sau nu vizitat se
+      foloseşte un vector caracteristic. Algoritmul este:
+      <ul>
+        <li>adaugăm în coadă vârful inițial și îl vizităm</li>
+        <li>cât timp coada este nevidă</li>
+        <ul>
+          <li>extragem un element din coadă</li>
+          <li>extragem un element din coadă</li>
+          <li>eliminăm elementul din coadă</li>
+        </ul>
+      </ul>
+      Dacă graful nu este conex, în urma parcurgerii nu se vor vizita toate vârfurile.
+      <br>
+      <b>Implementare C++:      </b><br>
+      <script src="https://ideone.com/e.js/sxqU5M" type="text/javascript" ></script>
       <br /><br /><br /><br />
     </div>
     <div class="partial" data-path="./../partials/footer.html"></div>
