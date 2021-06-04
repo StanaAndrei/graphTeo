@@ -709,10 +709,154 @@
           <li>eliminăm elementul din coadă</li>
         </ul>
       </ul>
-      Dacă graful nu este conex, în urma parcurgerii nu se vor vizita toate vârfurile.
-      <br>
-      <b>Implementare C++:      </b><br>
-      <script src="https://ideone.com/e.js/sxqU5M" type="text/javascript" ></script>
+      Dacă graful nu este conex, în urma parcurgerii nu se vor vizita toate
+      vârfurile.
+      <br />
+      <b>Implementare C++: </b><br />
+      <script
+        src="https://ideone.com/e.js/sxqU5M"
+        type="text/javascript"
+      ></script>
+      <div class="bigt">Tare conexitate</div>
+      Un graf orientat G=(V,E) este tare conex dacă pentru orice pereche de
+      noduri distincte (x,y) există cel puțin un drum de la x la y și există cel
+      puțin un drum de la y la x.
+      <br />
+      <div class="subtitle">
+        Verificarea tare conexității. Determinarea componentelor tare conexe
+      </div>
+      Verificare tare conexității unui graf orientat poate fi privită ca un caz
+      particular al determinării componentelor tare conexe, deoarece, dacă
+      graful are o singură componentă tare conexă atunci el este tare conex. În
+      continuare vom vedea două metode de determinare a componentelor tare
+      conexe. Ambele folosesc noțiunea de graf transpus, pe care o definim în
+      continuare: Definiție: Fie G=(V,E) un graf orientat. Se numește graf
+      transpus al lui G graful orientat GT=(V,ET), cu aceleași mulțimea a
+      nodurilor și pentru orice pereche de noduri are loc: (x,y) este arc în G
+      dacă și numai dacă (y,x) este arc în GT.
+      <div class="subtitle">Algoritmul Plus-Minus</div>
+      Pentru fiecare nod x al grafului care încă nu a fost plasat într-o
+      componentă tare conexă:
+      <ul>
+        <li>
+          determinăm toate nodurile în care se poate ajunge din x, folosind
+          graful G și le marcăm într-un tablou cu plus;
+        </li>
+        <li>
+          determinăm toate nodurile din care se poate ajunge în x, folosind
+          graful GT și le marcăm într-un tablou cu minus;
+        </li>
+        <li>
+          nodurile marcate atât cu plus, cât și cu minus, împreună cu x formează
+          o componentă tare conexă;
+        </li>
+      </ul>
+      <b>Secvență C++:</b>
+      <ul>
+        <li>n, a[][] – numărul de noduri și matricea de adiacență</li>
+        <li>nrc – numărul de componente tare conexe</li>
+        <li>
+          ctc[] – tablou pentru memorarea componentelor tare conexe: ctc[i] =
+          numărul de ordine al componentei din care face parte nodul i
+        </li>
+        <li>
+          s[], p[] – tablouri pentru marcare nodurilor vizitate în timpul
+          parcurgerilor
+        </li>
+        <li>
+          să observăm că graful inițial și cel transpus pot fi memorate prin
+          aceeași matrice de adiacență
+        </li>
+      </ul>
+      <script
+        src="https://ideone.com/e.js/m6ntQl"
+        type="text/javascript"
+      ></script>
+      <div class="subtit">Algoritmul lui Kosaraju</div>
+      Alt algoritm, mai eficient, pentru determinarea componentelor tare conexe
+      este Algoritmul lui Kosaraju. Să ne amintim că la parcurgerea în adâncime
+      se pot asocia nodurilor două momente de timp: *d[x] – momentul când nodul
+      x este descoperit și adăugat pe stivă: timpul de descoperire a nodului
+      *f[x] – momentul când se termină de vizitat succesorii lui x, iar nodul x
+      se elimină de pe stivă: timpul de finalizare a nodului Aceste momente de
+      timp vor fi numere naturale între 1 și 2*n, unde n este numărul de noduri
+      din graf. Algoritmul lui Kosaraju este: determinăm graful transpus GT:
+      parcurgem în adâncime graful și determinăm pentru fiecare nod x timpul de
+      finalizare f[x] apoi parcurgem în adâncime graful transpus GT, dar
+      considerăm nodurile în ordinea descrescătoarea timpilor de finalizare apoi
+      nodurile din arborii de parcurgere obținuți reprezintă câte o componentă
+      tare conexă.
+      <b>Secvență C++: </b>
+      <script
+        src="https://ideone.com/e.js/cV7wpj"
+        type="text/javascript"
+      ></script>
+      Fie G=(V,U) un graf orientat cu n noduri. Algoritmul Roy-Warshall construiește matricea drumurilor: D cu n linii și n coloane, în care:
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <msub>
+          <mi>D</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>j</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mtext>dac&#x103;&#xA0;</mtext>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mi>j</mi>
+                <mtext>&#xA0;sau nu exist&#x103; drum de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mtext>dac&#x103;&#xA0;</mtext>
+                <mi>i</mi>
+                <mo>&#x2260;<!-- ≠ --></mo>
+                <mi>j</mi>
+                <mtext>&#xA0;&#x219;i exist&#x103; drum de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo fence="true" stretchy="true" symmetric="true"></mo>
+        </mrow>
+      </math>
+      Conform definiției de mai sus, în matricea drumurilor, elementele cu indici egali vor avea întotdeauna valoarea 0. Alternativ, putem accepta și elemente Di,i=1, înțelegând prin asta că există un circuit care conține nodul i.
+
+Pentru a construi această matrice, se pornește de la matricea de adiacență și i se aplică o serie de transformări, pornind de la următoarea idee: dacă nu există drum de la i la j, dar există drum de la i la k și drum de la k la j, atunci va exista și drum de la i la j, prin reuniunea celor două drumuri existente.
+<br>
+Mai exact:
+<ul>
+  <li>inițial avem numai drumurile care nu au noduri intermediare (arcele)
+  </li>
+  <li>determinăm toate drumurile care îl au eventual ca nod intermediar pe 1</li>
+  <li>determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2}</li>0
+  <li>determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2,3}...</li>
+  <li>pentru un k oarecare, determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2,…,k}. Pentru aceasta, vom căuta toate perechile de noduri i,j astfel încât Di,k=1 și Dk,j=1, de unde va rezulta că și Di,j=1.</li>
+</ul>
+  <b>Secvența C++
+  </b>
+
+  
       <br /><br /><br /><br />
     </div>
     <div class="partial" data-path="./../partials/footer.html"></div>
