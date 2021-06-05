@@ -25,6 +25,7 @@
         color: #f1f1f1;
         user-select: none;
         text-align: center;
+        position: sticky;
       }
 
       .content {
@@ -53,9 +54,11 @@
         display: none;
       }
     </style>
-    <div class="header" id="myHeader">
-      <div class="home"
-       onclick="window.location.assign(Boolean(window.location.href.search('https') === -1) ? '/' : '/graphTeo/')">
+    <div class="header sticky" id="myHeader">
+      <div
+        class="home"
+        onclick="window.location.assign(Boolean(window.location.href.search('https') === -1) ? '/' : '/graphTeo/')"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -145,6 +148,6 @@
     <div class="helper"></div>
   </body>
   <script>
-    console.log('script eval');
+    console.log("script eval");
   </script>
 </html>
