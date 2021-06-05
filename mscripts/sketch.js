@@ -1,5 +1,6 @@
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+    window.location.reload();
 }
 
 let rendered = false;
@@ -12,8 +13,11 @@ const renderTitle = () => {
     if (rendered) {
         return;
     }
+    push();
+    textSize(35);
+    textStyle(ITALIC);
+    fill(0, 102, 153);
     //1
-    textSize(32);
     text(TEXT1, x1, height / 2);
     if (x1 + DELTA1 < width / 2) {
         x1 += TRANSITIONSPEED;
@@ -23,6 +27,22 @@ const renderTitle = () => {
     if (x2 - DELTA2 > width / 2 - 120) {
         x2 -= TRANSITIONSPEED;
     }
+    pop();
+}
+
+const RADIUS = 50;
+let mainx, mainy;
+const animateGraph1 = () => {
+    noFill();
+    circle(mainx, mainy, RADIUS);
+    fill(50);
+    textAlign(CENTER, BOTTOM);
+    textSize(20);
+    textStyle(BOLD);
+    text('1', mainx, mainy + RADIUS / 4);
+    if (mainy > height / 2) {
+        mainy--;
+    }
 }
 
 function setup() {
@@ -31,12 +51,16 @@ function setup() {
     canvas.position(0, 0);
     canvas.style('z-index', -1);
     angleMode(DEGREES);
-    //ini
+    //ini title
     x1 = 0;
-    x2 = width - 0;
+    x2 = width;
+    //ini graph1
+    mainx = width - width / 4;
+    mainy = height;
 }
 
 function draw() {
     background(148, 177, 227);
     renderTitle();
+    animateGraph1();
 }
