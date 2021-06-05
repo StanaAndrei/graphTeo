@@ -15,5 +15,6 @@
   
 .mainmenu {
     margin: auto;
-    width: 5%;
+    width: 20px;
+    padding-top: 100px;
 }
