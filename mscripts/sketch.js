@@ -24,7 +24,7 @@ const renderTitle = () => {
     }
     //2
     text(TEXT2, x2, height / 2);
-    if (x2 - DELTA2 > width / 2 - 120) {
+    if (x2 - DELTA2 > width / 2 - 100) {
         x2 -= TRANSITIONSPEED;
     }
     pop();
@@ -41,7 +41,7 @@ const animateGraph1 = () => {
     textStyle(BOLD);
     text('1', mainx, mainy + RADIUS / 4);
     if (mainy > height / 2) {
-        mainy--;
+        mainy -= TRANSITIONSPEED;
     }
 }
 

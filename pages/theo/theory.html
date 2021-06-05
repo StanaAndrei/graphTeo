@@ -1185,6 +1185,60 @@
       t[k]__2_3_0_5_2_4_1_9_3_1___9___11
       <div class="bigt">Păduri de mulțimi disjuncte
       </div>
+      În unele situații se cere gruparea elementelor unei mulțimi date într-o colecție de submulțimi disjuncte. Pentru o astfel de colecție sunt importante următoarele operații:
+      <ul>
+        <li>stabilirea submulțimii din care face parte un anumit element
+        </li>
+        <li>pentru două elemente date, reuniunea submulțimilor din care fac parte aceste elemente
+        </li>
+      </ul>
+      Pentru fiecare submulțime se stabilește un reprezentant – unul dintre elementele submulțimii. Fiecare element al submulțimii este asociat într-un anumit mod cu reprezentantul acesteia. În acest fel, operația de stabilire a submulțimii din care face parte un anumit element constă în simpla identificare a reprezentantului, iar operația de reuniune a două submulțimii constă în asocierea elementelor unei submulțimii cu reprezentantul celeilalte. Două elemente fac parte din aceeași submulțime dacă sunt asociate cu același reprezentant.
+      <br>
+      <b>Utilizări</b>
+      Operațiile cu mulțimi disjuncte pot fi folosite pentru determinarea componentelor conexe ale unui graf, astfel:
+      <ul>
+        <li>inițial fiecare nod face parte din propria sa submulțime;
+        </li>
+        <li>pentru fiecare muchie (x,y) stabilim dacă x și y fac parte din submulțimi diferite, caz în care reunim cele două submulțimi;
+        </li>
+        <li>la final, fiecare submulțime reprezintă câte o componentă conexă a grafului dat.
+        </li>
+      </ul>
+      O altă aplicație a acestor structuri de date este Algoritmul lui Kruskal pentru determinarea arborelui parțial de cost minim a unui graf neorientat cu costuri.
+      <br><b>Păduri de mulțimi disjuncte
+      </b>
+      <br>
+      O modalitate eficientă de gestionare a submulțimilor și a operațiilor cu acestea este utilizarea unor structuri arborescente (a unei păduri), numite pădure de mulțimi disjuncte, în care:
+      <ul>
+        <li>fiecare submulțime este reprezentată printr-un arbore cu rădăcină
+        </li>
+        <li>rădăcina fiecărui arbore este reprezentantul submulțimii
+        </li>
+        <li>operațiile se implementează astfel:
+        </li>
+        <ul>
+          <li>stabilirea submulțimii din care face parte un anumit element constă de regulă în identificarea rădăcinii arborelui din care face parte
+          </li>
+          <li>reuniunea a două submulțimi constă în concatenarea arborilor: rădăcina unuia dintre arbore i se stabilește devine tată pentru rădăcina celuilalt
+          </li>
+        </ul>
+      </ul>
+      Gestionarea arborilor se poate face prin intermediul unui vector de tați:T[k] = 0, dacă k este rădăcină a unui arbore (și reprezentant al submulțimii corespunzătoare)
+      ,T[k] = tatăl lui k în arborele din care face parte 
+      <b>Implementare C++
+      </b>
+      <script src="https://ideone.com/e.js/8730VY" type="text/javascript" ></script>
+      <b>Îmbunătățirea operațiilor
+      </b>
+      Această implementare a operațiilor poate conduce la arbori cu înălțime mare. Acest fapt are efect asupra operației de determinare a rădăcinii arborelui din care face parte un nod dat, care este cu atât mai rapidă cu cât lungimea lanțului de la nod la rădăcină este mai mică. În gestionarea pădurilor de mulțimi disjuncte se pot folosi două euristici care duc la complexitate aproape liniară în raport cu numărul total de operații:
+      <ul>
+        <li>reuniunea după rang – se va păstra pentru fiecare arbore o aproximare a dimensiunii sale, numită rang. La reuniunea a doi arbori, cel cu rangul mai mic va deveni subarbore al celui cu rangul mai mare. Dacă cei doi arbori au același rang, rangul arborelui obținut va crește cu o unitate;
+        </li>
+        <li>comprimarea drumului – în funcția de determinare a rădăcinii pentru un nod dat, modificăm tații nodurilor de pe lanțul spre rădăcină, astfel încât acestea să devină fii ai rădăcinii. Altfel spus, legăm nodurile direct de rădăcină.
+        </li>
+      </ul>
+      <script src="https://ideone.com/e.js/i2uhJS" type="text/javascript" ></script>
+      <br>
       <div class="subtitle">----------------------------------------</div>
       <br /><br /><br /><br />
     </div>
