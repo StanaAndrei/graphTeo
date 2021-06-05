@@ -791,7 +791,8 @@
         src="https://ideone.com/e.js/cV7wpj"
         type="text/javascript"
       ></script>
-      Fie G=(V,U) un graf orientat cu n noduri. Algoritmul Roy-Warshall construiește matricea drumurilor: D cu n linii și n coloane, în care:
+      Fie G=(V,U) un graf orientat cu n noduri. Algoritmul Roy-Warshall
+      construiește matricea drumurilor: D cu n linii și n coloane, în care:
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <msub>
           <mi>D</mi>
@@ -804,7 +805,12 @@
         <mo>=</mo>
         <mrow>
           <mo>{</mo>
-          <mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+          <mtable
+            columnalign="left left"
+            rowspacing=".2em"
+            columnspacing="1em"
+            displaystyle="false"
+          >
             <mtr>
               <mtd>
                 <mn>0</mn>
@@ -840,23 +846,346 @@
           <mo fence="true" stretchy="true" symmetric="true"></mo>
         </mrow>
       </math>
-      Conform definiției de mai sus, în matricea drumurilor, elementele cu indici egali vor avea întotdeauna valoarea 0. Alternativ, putem accepta și elemente Di,i=1, înțelegând prin asta că există un circuit care conține nodul i.
+      Conform definiției de mai sus, în matricea drumurilor, elementele cu
+      indici egali vor avea întotdeauna valoarea 0. Alternativ, putem accepta și
+      elemente Di,i=1, înțelegând prin asta că există un circuit care conține
+      nodul i. Pentru a construi această matrice, se pornește de la matricea de
+      adiacență și i se aplică o serie de transformări, pornind de la următoarea
+      idee: dacă nu există drum de la i la j, dar există drum de la i la k și
+      drum de la k la j, atunci va exista și drum de la i la j, prin reuniunea
+      celor două drumuri existente.
+      <br />
+      Mai exact:
+      <ul>
+        <li>
+          inițial avem numai drumurile care nu au noduri intermediare (arcele)
+        </li>
+        <li>
+          determinăm toate drumurile care îl au eventual ca nod intermediar pe 1
+        </li>
+        <li>
+          determinăm toate drumurile care au noduri intermediare numai din
+          mulțimea {1,2}
+        </li>
+        0
+        <li>
+          determinăm toate drumurile care au noduri intermediare numai din
+          mulțimea {1,2,3}...
+        </li>
+        <li>
+          pentru un k oarecare, determinăm toate drumurile care au noduri
+          intermediare numai din mulțimea {1,2,…,k}. Pentru aceasta, vom căuta
+          toate perechile de noduri i,j astfel încât Di,k=1 și Dk,j=1, de unde
+          va rezulta că și Di,j=1.
+        </li>
+      </ul>
+      <b>Secvența C++ </b>
+      Secvență C++ – elementele de pe diagonală rămân 0:
+      <br />
+      <script
+        src="https://ideone.com/e.js/TBROm4"
+        type="text/javascript"
+      ></script>
+      Următoarea versiune transformă în 1 și elementele de pe diagonală care
+      corespund unor noduri care fac parte din cel puțin un circuit.
+      <br />
+      <script
+        src="https://ideone.com/e.js/GNS3nG"
+        type="text/javascript"
+      ></script>
+      <div class="subtitle">Drumuri de cost minim într-un graf orientat</div>
+      Fie G=(V,U) un graf orientat ponderat – în care fiecare arc are asociată o
+      valoare reală numită pondere sau cost, de regulă pozitivă, cu noduri
+      numerotate de la 1 la n. Se dorește determinarea pentru fiecare pereche de
+      noduri x y, dacă există, a unui drum de cost minim – în care suma
+      costurilor asociate arcelor care definesc drumul este minimă. Algoritmul
+      pornește matricea costurilor , A – în care: <br />
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>j</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable
+            columnalign="left left"
+            rowspacing=".2em"
+            columnspacing="1em"
+            displaystyle="false"
+          >
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mtext>dac&#x103;&#xA0;</mtext>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mi>j</mi>
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mtext>costul arcului&#xA0;</mtext>
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo>,</mo>
+                <mi>j</mi>
+                <mo stretchy="false">)</mo>
+              </mtd>
+              <mtd>
+                <mtext>&#xA0;dac&#x103; exist&#x103; arc de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi mathvariant="normal">&#x221E;<!-- ∞ --></mi>
+              </mtd>
+              <mtd>
+                <mtext>&#xA0;dac&#x103; nu exist&#x103; arc de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo fence="true" stretchy="true" symmetric="true"></mo>
+        </mrow>
+      </math>
+      În reprezentarea în memorie, ∞ va fi înlocuit cu o valoare numerică mare.
+      În C++, aceasta poate fi INF = 0x3F3F3F3F, având următoarele avantaje:
+      <ul>
+        <li>
+          INF se reprezintă în tipul int (pe 32 de biți cu semn) și este mai
+          mare decât 1.000.000.000
+        </li>
+        <li>
+          suma INF + INF nu depășește limita maximă a tipului int, deci nu va
+          face overflow.
+        </li>
+      </ul>
+      Prin algoritmul Roy-Floyd matricea va fi transformată, astfel încât la
+      final va avea următoarea semnificație:
 
-Pentru a construi această matrice, se pornește de la matricea de adiacență și i se aplică o serie de transformări, pornind de la următoarea idee: dacă nu există drum de la i la j, dar există drum de la i la k și drum de la k la j, atunci va exista și drum de la i la j, prin reuniunea celor două drumuri existente.
-<br>
-Mai exact:
-<ul>
-  <li>inițial avem numai drumurile care nu au noduri intermediare (arcele)
-  </li>
-  <li>determinăm toate drumurile care îl au eventual ca nod intermediar pe 1</li>
-  <li>determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2}</li>0
-  <li>determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2,3}...</li>
-  <li>pentru un k oarecare, determinăm toate drumurile care au noduri intermediare numai din mulțimea {1,2,…,k}. Pentru aceasta, vom căuta toate perechile de noduri i,j astfel încât Di,k=1 și Dk,j=1, de unde va rezulta că și Di,j=1.</li>
-</ul>
-  <b>Secvența C++
-  </b>
-
-  
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <msub>
+          <mi>D</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>j</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable
+            columnalign="left left"
+            rowspacing=".2em"
+            columnspacing="1em"
+            displaystyle="false"
+          >
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mtext>dac&#x103;&#xA0;</mtext>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mi>j</mi>
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mtext>costul minim al unui drum de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+              </mtd>
+              <mtd>
+                <mtext
+                  >&#xA0;dac&#x103; exist&#x103; un asemenea drum&#xA0;</mtext
+                >
+                <mo>,</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi mathvariant="normal">&#x221E;<!-- ∞ --></mi>
+              </mtd>
+              <mtd>
+                <mtext>&#xA0;dac&#x103; nu exist&#x103; drum de la&#xA0;</mtext>
+                <mi>i</mi>
+                <mtext>&#xA0;la&#xA0;</mtext>
+                <mi>j</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo fence="true" stretchy="true" symmetric="true"></mo>
+        </mrow>
+      </math>
+      <b>Secvență C++ </b>
+      <script
+        src="https://ideone.com/e.js/HcbJry"
+        type="text/javascript"
+      ></script>
+      <br />
+      <div class="bigt">Algoritmul lui Dijkstra</div>
+      Algoritmul lui Dijkstra determină pentru un nod dat într-un graf orientat
+      cu costuri costurile minime ale drumurilor care au acel nod ca extremitate
+      inițială. Mai precis, pentru un nod s – sursă, algoritmul determină pentru
+      orice nod x costul minim al unui drum de la s la x. Strategia algoritmului
+      lui Dijkstra este una de tip Greedy: <br />
+      <ul>
+        <li>
+          se menține un tablou d[], în care d[x] reprezintă costul minim curent
+          (eventual infinit) al unui drum de la s la x;
+        </li>
+        <li>
+          se menține o mulțime F de noduri k pentru care s-a determinat costul
+          minim final d[k]
+        </li>
+        <li>
+          inițial în F se adaugă doar nodul s, pentru care d[s]=0; pentru
+          nodurile x adiacente cu s, d[x]=c[s,x], unde c[x,y] este costul
+          arcului (x,y), iar pentru celelalte noduri costul d[] se inițializează
+          cu INFINIT;
+        </li>
+        <li>în mod repetat:</li>
+        <ul>
+          <li>
+            alegem un nod din afara mulțimii F, nodul k pentru care costul
+            drumului d[k] este minim și finit;
+          </li>
+          <li>adăugăm nodul găsit k în F;</li>
+          <li>
+            pentru fiecare arc (k,x) cu x din afara mulțimii F stabilim dacă
+            acest arc se îmbunătățește costul d[x] (arcul relaxează drumul);
+          </li>
+        </ul>
+        <li>
+          alegerea acestor noduri se termină când toate nodurile au fost
+          adăugate în F (s-au determinat costurile drumurile de la s la fiecare
+          nod al grafului) sau când nu mai există noduri x din afara mulțimii F
+          pentru care d[x] este finit;
+        </li>
+      </ul>
+      <b>Secvență C++ </b>
+      <script
+        src="https://ideone.com/e.js/8sMo4o"
+        type="text/javascript"
+      ></script>
+      <div class="subtitle">Algoritmul lui Kruskal</div>
+      Considerăm un graf neorientat ponderat (cu costuri) conex G. Se numește
+      arbore parțial un graf parțial al lui G care este arbore. Se numește
+      arbore parțial de cost minim un arbore parțial pentru care suma costurilor
+      muchiilor este minimă. Dacă graful nu este conex, vorbim despre o pădure
+      parțială de cost minim. Algoritmul lui Kruskal permite determinarea unui
+      arbore parțial de cost minim (APM) într-un graf ponderat cu N noduri.
+      <br />
+      <b>Descrierea algoritmului </b>
+      Pentru a determina APM-ul se pleacă de la o pădure formată din N
+      subarbori. Fiecare nod al grafului reprezintă inițial un subarbore.
+      Aceștia vor fi reuniți succesiv prin muchii, până când se obține un singur
+      arbore (dacă graful este conex) sau până când acest lucru nu mai este
+      posibil (dacă graful nu este conex).
+      <ul>
+        <li>se ordonează muchiile grafului crescător după cost;</li>
+        <li>
+          se analizează pe rând muchiile grafului, în ordinea crescătoare a
+          costurilor;
+        </li>
+        <li>pentru fiecare muchie analizată:</li>
+        <ul>
+          <li>
+            dacă extremitățile muchiei fac parte din același subarbore, muchia
+            se ignoră
+          </li>
+          <li>
+            dacă extremitățile muchiei fac parte din subarbori diferiți, aceștia
+            se vor reuni, iar muchia respectivă face parte din APM.
+          </li>
+        </ul>
+      </ul>
+      <b>Secvență C++ </b>
+      <script
+        src="https://ideone.com/e.js/yTOCZj"
+        type="text/javascript"
+      ></script>
+      <div class="bigt">Arbori cu rădăcină</div>
+      <div class="subtitle">Arbore liber</div>
+      Un arbore este un graf conex și aciclic. Se mai numește și arbore liber.
+      Următoarele propoziții sunt adevărate:
+      <ul>
+        <li>Un arbore cu n vârfuri are n-1 muchii.</li>
+        <li>
+          Un arbore este un graf conex și minimal cu această proprietate; dacă
+          s-ar mai elimina o muchie, graful nu ar mai fi conex.
+        </li>
+        <li>
+          Un arbore este un graf aciclic și maximal cu această proprietate; dacă
+          s-ar mai adăuga o muchie, s-ar obține un ciclu.
+        </li>
+        <li>
+          Între oricare două vârfuri ale unui arbore există un lanț elementar
+          unic.
+        </li>
+      </ul>
+      <div class="subtitle">Arbori cu rădăcină</div>
+      Pentru un arbore se poate stabili un nod special, numit rădăcină. Putem
+      spune că “agățăm” arborele în rădăcină, iar restul nodurilor cad. Mai jos
+      avem trei arbori cu rădăcină. Toți pornesc de la arborele de mai sus, dar
+      diferă prin alegerea rădăcinii.
+      <br /><img src="./../images/img19.JPG" alt="" /> <br />
+      <b>Terminologie</b>
+      Fie un arbore cu rădăcina r și x un nod în acest arbore. Atunci:se numește
+      ascendent al lui x orice nod y, diferite de x, aflat pe lanțul de la
+      rădăcină la x; rădăcina nu are ascendenți; rădăcina este ascendent pentru
+      toate nodurile din arbore; dacă y este ascendent al lui x și există muchia
+      (y,x), atunci y se numește ascendent direct al lui x sau tatăl lui x;
+      rădăcina este singurul nod din arbore care nu are tată; un nod y este
+      descendent al nodului x, diferit de y, dacă x aparține lanțului de la r la
+      y; dacă în plus există muchia (x,y), atunci y este descendent direct sau
+      fiu al lui x; un nod care nu are niciun descendent se numește frunză; două
+      noduri care au același tată se numesc frați; lungimea unui lanț de la
+      rădăcina arborelui la un nod x reprezintă nivelul sau adâncimea nodului x;
+      lungimea maximă a unui lanț de la rădăcină la un nod al arborelui
+      reprezintă înălțimea arborelui; un nod al arborelui împreună cu toți
+      descendenții săi formează un subarbore;
+      <br />
+      <div class="subtitle">Reprezentarea arborilor</div>
+      <b>Reprezentarea prin referințe descendente </b>
+      <img src="./../images/img20.JPG" alt="" />
+      Pentru fiecare nod al arborelui se memorează informații despre
+      descendenții săi direcți. Este similară cu reprezentarea prin liste de
+      adiacențe a grafurilor. Pentru arborele de mai sus avem: F[1]={7,10}
+      F[2]={1,5} F[3]={2,9} F[4]={6} F[5]={4} F[6]={} F[7]={} F[8]={}
+      F[9]={8,11} F[10]={} F[11]={12} F[12]={} <br />
+      <div class="subtitle">Reprezentarea prin referințe ascendente</div>
+      Pentru fiecare nod se memorează informații despre ascendenții direcți. Vom
+      obține un vector de tați, în care:
+      <ul>
+        <li>t[r] = 0, unde r este rădăcina arborelui</li>
+        <li>t[k] = tatăl nodului k</li>
+      </ul>
+      Pentru arborele de mai sus avem: <br />
+      k_____1_2_3_4_5_6_7_8_9_10__1__12 <br />
+      t[k]__2_3_0_5_2_4_1_9_3_1___9___11
+      <div class="bigt">Păduri de mulțimi disjuncte
+      </div>
+      <div class="subtitle">----------------------------------------</div>
       <br /><br /><br /><br />
     </div>
     <div class="partial" data-path="./../partials/footer.html"></div>
