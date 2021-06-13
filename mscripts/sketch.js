@@ -30,21 +30,6 @@ const renderTitle = () => {
     pop();
 }
 
-const RADIUS = 50;
-let mainx, mainy;
-const animateGraph1 = () => {
-    noFill();
-    circle(mainx, mainy, RADIUS);
-    fill(50);
-    textAlign(CENTER, BOTTOM);
-    textSize(20);
-    textStyle(BOLD);
-    text('1', mainx, mainy + RADIUS / 4);
-    if (mainy > height / 2) {
-        mainy -= TRANSITIONSPEED;
-    }
-}
-
 function setup() {
     let canvas = createCanvas(windowWidth, windowHeight);
     console.log('sketch ok!');
@@ -62,5 +47,4 @@ function setup() {
 function draw() {
     background(148, 177, 227);
     renderTitle();
-    animateGraph1();
 }
